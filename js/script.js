@@ -1,7 +1,3 @@
-var nome = 'oliveira';
-console.log(nome.length);
-console.log(nome.slice(-1));
-
 function calcular(tipo, valor){
     if(tipo === 'acao'){
 
@@ -15,7 +11,7 @@ function calcular(tipo, valor){
             valor === '+' ||
             valor === '.'
         ){
-            document.getElementById('resultado').value += valor;
+            validator1(valor);
         }
         if(valor === '='){
             let resultado_operacao = eval(document.getElementById('resultado').value)
@@ -24,5 +20,20 @@ function calcular(tipo, valor){
         
     }else if(tipo === 'valor'){
         document.getElementById('resultado').value += valor;
+    }
+}
+
+function validator1(value_character){
+    last_character = document.getElementById('resultado').value.slice(-1);
+    console.log(last_character);
+    if(
+        last_character === '/' ||
+        last_character === '*' ||
+        last_character === '+' ||
+        last_character === '-'
+    ){
+        return;
+    }else{
+        document.getElementById('resultado').value += value_character;
     }
 }
